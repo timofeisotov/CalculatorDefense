@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,15 +16,33 @@ public class EquationGenerator : MonoBehaviour
     {
         string operation = "";
 
-        if (toggleAdd.isOn) operation = "+";
-        else if (toggleSub.isOn) operation = "-";
-        else if (toggleMul.isOn) operation = "*";
-        else if (toggleDiv.isOn) operation = "/";
-        else
+        int count = 0;
+        if (toggleAdd.isOn)
+        {
+            operation = "+";
+            count++;
+        }
+        if (toggleSub.isOn) 
+        {
+            operation = "-";
+            count++;
+        }
+        if (toggleMul.isOn)
+        {
+            operation = "*";
+            count++;
+        }
+        if (toggleDiv.isOn) 
+        { 
+            operation = "/";
+            count++;
+        }
+        if (count > 1)
         {
             textDisplay.text = "Выберите действие!";
-            return;
-        }
+            return; 
+        } 
+        
 
         int num1 = Random.Range(1, 20);
         int num2 = Random.Range(1, 20);
